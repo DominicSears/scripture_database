@@ -18,7 +18,7 @@ $(document).ready(function (){
                         // for (var i = 0; i < res.result.size; i++){
                             
                         // }
-                        console.log('finished');
+                        console.log('finished this');
                     } else {
                         console.log(res.alert);
                     }
