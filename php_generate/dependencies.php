@@ -10,35 +10,26 @@
     function getResults($tags, $conn){
         $queryResults = array();
         $show = array();
+        $tag = explode(', ', $tags);
 
-        if (isset($conn)){            
-            $setSearch = $conn->query('SELECT * FROM `scripture`;');
-            $getRes = $setSearch->fetchAll(PDO::FETCH_ASSOC);
+        $setRes = $conn->query('SELECT * FROM `scripture`;');
+        $getRes = $setRes->fetchAll(PDO::FETCH_ASSOC);
 
-            $tag = explode(', ', $tags);
-            $resTags = array();
-
-            foreach ($getRes as $res){
-                for ($i = 0; $i < sizeof($tag); $i++){
-                    array_push($resTags, explode(', ', $res['tags']));
-                    for ($i2 = 0; $i2 < sizeof($resTags[$i]); $i2++){
-                        if ($tag[$i] == $resTags[$i][$i2]){
-                            if (!isset($show[$i])){
-                                array_push($show, true);
-                            }
-                        }
-                    }
-                }
-                for ($i = 0; $i < sizeof($show); $i++){
-                    if ($show[$i]){
-                        array_push($queryResults, array('book' => $res['book'], 'chapter' => $res['chapter'], 'verse' => $res['verse'], 'tags' => $res['tags'], 'comments' => $res['comments'], 'explain' => $res['explanation']));
+        foreach ($getRes as $res){
+            $resTags = explode($res['tags']);
+            $pass = false;
+            for ($i = 0; $i < sizeof($resTags); $i++){
+                for($i2 = 0; $i2 < sizeof($tag); $i2++){
+                    if ($resTags[$i] == $tag[$i2]){
+                        $pass = true;
                     }
                 }
             }
-            
-            return $queryResults;
-
-        } else {
-            return false;
+            ($pass) ? array_push($show, true) : array_push($show, false);
+        }
+        for ($i = 0; $i sizeof($show); $i++){
+            if ($show[$i]){
+                array_push($queryResults, array('book' => $getRes[$i]['book'], 'chapter' => $getRes[$i]['chapter'], 'verse' => $getRes[$i]['verse'], 'comments' => $getRes[$i]['comments'], 'explanation' => $getRes[$i]['explanation'], 'fp' => $getRes[$i]['in_first_principles'], 'referenced' => $getRes[$i]['referenced_in'], 'tags' => $getRes[$i]['tags']));
+            }
         }
     }
