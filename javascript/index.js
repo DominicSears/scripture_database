@@ -8,7 +8,7 @@ $(document).ready(function (){
             type: 'POST',
             url: 'localhost/bible_database/server_scripts/search.php',
             data: {
-                query: $('#field').val();
+                query: $('#field').val()
             },
             success: function (data){
                 let res = $.parseJSON(data);
