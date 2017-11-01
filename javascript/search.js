@@ -15,15 +15,14 @@ $(document).ready(function (){
                     console.log(data);
         
                     if (!res.error){
-                        // for (var i = 0; i < res.result.size; i++){
-                            
-                        // }
-                        console.log('finished this');
+                        $(res.result).each(function (index, value){
+                            console.log(value.book + ' ' + value.chapter + ':' + value.verse + '\n');
+                        });
                     } else {
                         console.log(res.alert);
                     }
                 }
-            }).fail(function () { console.log('ajax request did not complete'); })
+            }).fail(function () { console.log('AJAX request did not complete'); })
         } else {
             alert('Enter tags into the field');
         }

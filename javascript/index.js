@@ -11,10 +11,12 @@ $(document).ready(function (){
                 query: $('#field').val()
             },
             success: function (data){
-                let res = $.parseJSON(data);
+                let res = JSON.parse(data);
 
                 if (!res.error){
-                    
+                    // idk
+                } else {
+                    console.log(res.alert);
                 }
             }
         }).fail(function (){

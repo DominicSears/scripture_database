@@ -16,7 +16,7 @@
         $getRes = $setRes->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($getRes as $res){
-            $resTags = explode($res['tags']);
+            $resTags = explode(', ', $res['tags']);
             $pass = false;
             for ($i = 0; $i < sizeof($resTags); $i++){
                 for($i2 = 0; $i2 < sizeof($tag); $i2++){
@@ -27,9 +27,11 @@
             }
             ($pass) ? array_push($show, true) : array_push($show, false);
         }
-        for ($i = 0; $i sizeof($show); $i++){
+        for ($i = 0; $i < sizeof($show); $i++){
             if ($show[$i]){
-                array_push($queryResults, array('book' => $getRes[$i]['book'], 'chapter' => $getRes[$i]['chapter'], 'verse' => $getRes[$i]['verse'], 'comments' => $getRes[$i]['comments'], 'explanation' => $getRes[$i]['explanation'], 'fp' => $getRes[$i]['in_first_principles'], 'referenced' => $getRes[$i]['referenced_in'], 'tags' => $getRes[$i]['tags']));
+                array_push($queryResults, array('book' => $getRes[$i]['book'], 'chapter' => $getRes[$i]['chapter'], 'verse' => $getRes[$i]['verse'], 'comments' => $getRes[$i]['comments'], 'explanation' => $getRes[$i]['explanation'], 'fp' => $getRes[$i]['included_in_FP'], 'referenced' => $getRes[$i]['referenced_in'], 'tags' => $getRes[$i]['tags']));
             }
         }
+
+        return $queryResults;
     }
