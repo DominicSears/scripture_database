@@ -1,8 +1,13 @@
 <?php
-    $user = 'root';
-    $pass = '';
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=bible', $user, $pass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    function getConnection(){
+        $user = 'root';
+        $pass = '';
+        $conn = new PDO('mysql:host=127.0.0.1;dbname=bible', $user, $pass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        return $conn;
+    }
 
     // Returns an array of the the results with their attributes
     // Must get each tag individaully into an array and then check if one or more tags match with each entry
