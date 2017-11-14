@@ -16,8 +16,15 @@ $(document).ready(function (){
         
                     if (!res.error){
                         $(res.result).each(function (index, value){
-                            console.log(value.book + ' ' + value.chapter + ':' + value.verse + '\n');
+                            console.log(value.book + ' ' + value.chapter + ':' + value.verse + '\n\n' + value.query);
                         });
+                        var results = document.getElementById('results');
+
+                        for (var val of res.result){
+                            temp = document.createAttribute('div');
+                            temp.appendChild('<p>' + val.book + ' ' + val.chapter + ':' + val.verse + '</p><br>');
+                            results.appendChild(temp);
+                        }
                     } else {
                         console.log(res.alert);
                     }

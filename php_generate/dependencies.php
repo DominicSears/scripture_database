@@ -17,6 +17,8 @@
         $show = array();
         $tag = explode(', ', $tags);
 
+        for ($i = 0; $i < sizeof($tag); $i++) { $tag[$i] = strtolower($tag[$i]); }
+
         $setRes = $conn->query('SELECT * FROM `scripture`;');
         $getRes = $setRes->fetchAll(PDO::FETCH_ASSOC);
 

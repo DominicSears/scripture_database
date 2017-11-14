@@ -12,5 +12,7 @@
             <input type="text" class="searchTools" id="field">
             <input type="button" class="searchTools" id="searchBtn" value="Search">
         </div>
+        <br>
+        <div id="results"></div>
     </body>
 </html>
