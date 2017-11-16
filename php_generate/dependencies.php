@@ -10,10 +10,9 @@
     }
 
     // Returns an array of the the results with their attributes
-    // Must get each tag individaully into an array and then check if one or more tags match with each entry
-    // Not the most effecient because I'm reading all the data from the database processing it in PHP instead of the SQL code
     function getResults($tags, $conn){
-        $queryResults = array();
+        $queryResults = null;
+        $hasMatches = false;
         $show = array();
         $tag = explode(', ', $tags);
 
@@ -29,6 +28,7 @@
                 for($i2 = 0; $i2 < sizeof($tag); $i2++){
                     if ($resTags[$i] == $tag[$i2]){
                         $pass = true;
+                        (!$hasMatches) ? $hasMatches = true : null; 
                     }
                 }
             }
@@ -40,5 +40,5 @@
             }
         }
 
-        return $queryResults;
+        return ($hasMatches) ? $queryResults : false;
     }

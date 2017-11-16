@@ -1,9 +1,9 @@
 $(document).ready(function (){
     $('#menuBtn').on('click', function (){
-        console.log('clicked');
+        location.href = window.location.origin + '/scripture_database/index.php';
     });
 
     $('#entryBtn').on('click', function (){
-        console.log('clicked: entry');
+        location.href = window.location.origin + '/scripture_database/newEntry.php';
     });
 });

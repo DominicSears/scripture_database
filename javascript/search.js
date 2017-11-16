@@ -9,22 +9,23 @@ $(document).ready(function (){
                 data: {
                     query: field.value
                 },
-                url: '/scripture_database/server_script/search.php',
+                url: location.origin + '/scripture_database/server_script/search.php',
                 success: function (data){
                     var res = JSON.parse(data);
                     console.log(data);
         
                     if (!res.error){
-                        $(res.result).each(function (index, value){
-                            console.log(value.book + ' ' + value.chapter + ':' + value.verse + '\n\n');
-                        });
-                        // var results = document.getElementById('results');
+                        var results = document.getElementById('results');
+                        
+                        for (var val of res.result){
+                            var temp = document.createElement('div');
+                            var temp2 = document.createElement('p');
+                            temp2.append(val.book + ' ' + val.chapter + ':' + val.verse)
+                            temp.appendChild(temp2);
+                            results.appendChild(temp);
+                        }
 
-                        // for (var val of res.result){
-                        //     temp = document.createAttribute('div');
-                        //     temp.appendChild('<p>' + val.book + ' ' + val.chapter + ':' + val.verse + '</p><br>');
-                        //     results.appendChild(temp);
-                        // }
+                        results.appendChild(document.createElement('br'));
                     } else {
                         console.log(res.alert);
                     }
