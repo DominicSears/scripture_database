@@ -10,6 +10,7 @@
         echo 'Error: ' . $e->getMessage() . "<br>Line" . $e->getLine() . "<br>Code: " . $e->getCode();
     }
 
-    unset($conn); ?>
+    unset($conn);
 
-<script type="text/javascript" src="/../javascript/newrow.js"></script>
+    header('Location: ' . realpath(__DIR__ . '/../newEntry.php'));
+    die();
