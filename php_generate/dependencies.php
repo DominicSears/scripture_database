@@ -11,12 +11,10 @@
 
     // Returns an array of the the results with their attributes
     function getResults($tags, $conn){
-        $queryResults = null;
+        $queryResults = array();
         $hasMatches = false;
         $show = array();
-        $tag = explode(', ', $tags);
-
-        for ($i = 0; $i < sizeof($tag); $i++) { $tag[$i] = strtolower($tag[$i]); }
+        $tag = explode(', ', strtolower($tags));
 
         $setRes = $conn->query('SELECT * FROM `scripture`;');
         $getRes = $setRes->fetchAll(PDO::FETCH_ASSOC);
@@ -28,7 +26,9 @@
                 for($i2 = 0; $i2 < sizeof($tag); $i2++){
                     if ($resTags[$i] == $tag[$i2]){
                         $pass = true;
-                        (!$hasMatches) ? $hasMatches = true : null; 
+                        if (!$hasMatches){
+                            $hasMatches = true;
+                        }
                     }
                 }
             }
