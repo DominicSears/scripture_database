@@ -14,4 +14,4 @@
 
     unset($conn);
 
-    header('Location: ' . '../newEntry.php');
+    header('Location: ../newEntry.php');
