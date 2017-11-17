@@ -14,5 +14,4 @@
 
     unset($conn);
 
-    header('Location: ' . realpath(__DIR__ . '/../newEntry.php'));
-    die();
+    header('Location: ' . '../newEntry.php');
