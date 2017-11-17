@@ -1,4 +1,4 @@
 <?php
     echo print_r($_SERVER);
 
-    header('Location: ' . '../index.php');
+    header('Location: ' . '../index.php'); // something
