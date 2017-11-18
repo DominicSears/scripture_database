@@ -4,7 +4,7 @@
         <script type="text/javascript" src="/scripture_database/javascript/frameworks/jquery-3.2.1.min.js"></script>
     </header>
     </body>
-        <?php include(__DIR__ . '\\php_generate\\navbar.php'); ?>
+        <?php include(__DIR__ . '/php_generate/navbar.php'); ?>
         <h1>Enter New Scripture to the Database</h1>
         <form action="server_script/newrow.php" method="post" target="_self">
             <label for="book">Book:</label>

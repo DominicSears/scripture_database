@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/css/index.css">
     </header>
     <body>
-        <?php include(__DIR__ . '\\php_generate\\navbar.php'); ?>
+        <?php include(__DIR__ . '/php_generate/navbar.php'); ?>
         <h1 id="indexTitle" class="title">Search Tags</h1>
         <div class="search">
             <input type="text" class="searchTools" id="field">
