@@ -17,9 +17,10 @@ $(document).ready(function (){
                     if (!res.error){
                         var results = document.getElementById('results');
                         
-                        for (var val of res.result){
+                        for (let val of res.result){
                             var temp = document.createElement('div');
                             var temp2 = document.createElement('p');
+                            temp2.className = "verse";
                             temp2.append(val.book + ' ' + val.chapter + ':' + val.verse)
                             temp.appendChild(temp2);
                             results.appendChild(temp);

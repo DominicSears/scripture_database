@@ -1,0 +1,32 @@
+div.search {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1#indexTitle {
+    text-align: left;
+    font-family: Roboto;
+}
+
+input#field.searchTools {
+    border-color: blue;
+    font-size: 24;
+    font-family: 'Roboto';
+    text-indent: 25;
+}
+
+input#searchBtn.searchTools {
+    border-radius: 15px;
+    border-color: blue;
+    background: transparent;
+    color: blue;
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24;
+    border-width: 3;
+}
+
+.tools button {
+    box-shadow: 0;
+    border: 0px;
+}
